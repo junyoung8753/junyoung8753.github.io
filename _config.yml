@@ -22,7 +22,7 @@ subtitle: "기록해 놓고싶은 과정들을 모아놓는 저장소"
 name: "박준영"
 description: "Coding을 공부하는 과정들"
 url: "https://junyoung8753.github.io"
-baseurl: # "/blog"
+baseurl: "" # "/blog"
 repository: "junyoung8753/junyoung8753.github.io"
 teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo: "/assets/images/favicon2.png"
@@ -267,3 +267,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+  # _docs
+  - scope:
+      path: "_docs"
+      type: docs
+    values:
+      sidebar:
+        nav: "docs"
