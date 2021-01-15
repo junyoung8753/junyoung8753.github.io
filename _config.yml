@@ -285,6 +285,7 @@ defaults:
       author_profile: false
       sidebar:
         nav: "js-docs"
+
   # vue_pages
   - scope:
       path: "vue_pages"
@@ -294,3 +295,13 @@ defaults:
       author_profile: false
       sidebar:
         nav: "vue-docs"
+
+  # more_pages
+  - scope:
+      path: "more_pages"
+      type: pages
+    values:
+      layout: category
+      author_profile: false
+      sidebar:
+        nav: "more-docs"

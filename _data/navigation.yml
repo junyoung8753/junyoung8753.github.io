@@ -4,6 +4,8 @@ main:
     url: /js/
   - title: "Vue"
     url: /vue/
+  - title: "More"
+    url: /more/
 
 js-docs:
   - title: JS Fundamentals
@@ -12,15 +14,17 @@ js-docs:
         url: /js/variable/
       - title: "String"
         url: /js/string/
-      - title: "Object"
-        url: /js/object/
-      - title: "Array"
-        url: /js/array/
 
 vue-docs:
   - title: Vue Framework
     children:
-      - title: "something"
-        url: /vue/something/
-      - title: "something1"
-        url: /vue/something2/
+      - title: "Vue.js란?"
+        url: /vue/
+
+more-docs:
+  - title: Notes Storage
+    children:
+      - title: "More Main"
+        url: /more/
+      - title: "Markdown사용법"
+        url: /more/markdown/
