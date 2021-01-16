@@ -91,7 +91,7 @@ analytics:
 
 # Site Author
 author:
-  name: "박준영"
+  name: "Jun Young Park"
   avatar: "/assets/images/Unknown_person.jpg"
   bio: "개발자를 향해 꾸준히!"
   location: "한쿡"
@@ -104,7 +104,7 @@ author:
       icon: #"fab fa-fw fa-facebook-square"
       url: #"https://facebook.com/"
     - label: "GitHub"
-      icon: "fab fa-fw fa-link"
+      icon: "fab fa-fw fa-github"
       url: "https://github.com/junyoung8753/"
     - label: "portfolio"
       icon: "fas fa-fw fa-link"
@@ -268,7 +268,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-
 
   # _docs
   - scope:

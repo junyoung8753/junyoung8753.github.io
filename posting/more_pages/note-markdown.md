@@ -1,7 +1,9 @@
 ---
 title: "Markdown 사용법"
+toc_label: "Markdown 사용법"
 permalink: /more/markdown/
 author_profile: true
+toc_sticky: true
 ---
 
 ## 헤더
@@ -201,13 +203,13 @@ js, bash, cpp, dockerfile, markdown, yml, html, http, json, r, ruby, xml, sql �
 \```  
 적당한 언어를 쓴후 내용물을 안쪽에 넣으면 된다.
 
-### JavaScript
+**JavaScript**
 
 ```javascript
 console.log("hello world");
 ```
 
-### HTML
+**HTML**
 
 ```html
 <html>
@@ -216,7 +218,7 @@ console.log("hello world");
 </html>
 ```
 
-Markdown
+**Markdown**
 
 ````markdown
     ### JavaScript
