@@ -4,15 +4,7 @@ permalink: /more/markdown/
 author_profile: true
 ---
 
-## 2단계
-
-### 3단계
-
-#### 4단계
-
-##### 5단계
-
-###### 6단계
+## 헤더
 
 ```markdown
     # 헤더

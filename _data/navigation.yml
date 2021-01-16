@@ -18,13 +18,8 @@ js-docs:
 vue-docs:
   - title: Vue Framework
     children:
-      - title: "Vue.js란?"
+      - title: "Vue.js 시작하기"
         url: /vue/
-      - title: "인스턴스"
-        url: /vue/instance/
-      - title: "configuration"
-        url: /vue/configuration/
-
 
 more-docs:
   - title: Notes Storage

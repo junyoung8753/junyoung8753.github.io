@@ -268,7 +268,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      toc: true
+
 
   # _docs
   - scope:
@@ -288,9 +288,10 @@ defaults:
       layout: category
       author_profile: false
       show_date: true
+      toc: true
+      toc_sticky: true
       sidebar:
         nav: "js-docs"
-      toc: true
 
   # vue_pages
   - scope:
@@ -301,6 +302,7 @@ defaults:
       author_profile: false
       show_date: true
       toc: true
+      toc_sticky: true
       sidebar:
         nav: "vue-docs"
 
@@ -312,6 +314,7 @@ defaults:
       layout: category
       author_profile: false
       show_date: true
+      toc: true
+      toc_sticky: true
       sidebar:
         nav: "more-docs"
-      toc: true
