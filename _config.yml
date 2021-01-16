@@ -281,7 +281,6 @@ defaults:
       sidebar:
         nav: "docs"
 
-  #------------------------------------
 
   # js_pages
   - scope:

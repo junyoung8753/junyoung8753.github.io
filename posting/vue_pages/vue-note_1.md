@@ -1,6 +1,7 @@
 ---
 title: "Vue.js 시작하기"
 permalink: /vue/
+type: pages
 layout: category
 toc: true
 toc_label: "Vue.js 시작하기"
@@ -10,6 +11,10 @@ show_date: true
 sidebar:
   nav: "vueside"
 ---
+
+
+
+
 
 <br>
 

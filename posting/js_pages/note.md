@@ -2,6 +2,7 @@
 title: "JavaScript Note"
 permalink: /js/
 author_profile: true
+type: pages
 layout: category
 show_date: true
 toc: true
