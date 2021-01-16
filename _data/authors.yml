@@ -1,0 +1,13 @@
+# Authors
+
+Billy Rick:
+  name: "Jun Young Park"
+  bio: "coding allnights"
+  avatar: "/assets/images/bio-photo-2.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "junyoung8753@gmail.com"
+    - label: "portfolio"
+      icon: "fas fa-fw fa-link"
+      url: "https://junyoung8753.github.io/Portfolio/"

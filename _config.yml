@@ -10,7 +10,7 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
+theme: "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
@@ -95,7 +95,7 @@ author:
   avatar: "/assets/images/Unknown_person.jpg"
   bio: "개발자를 향해 꾸준히!"
   location: "한쿡"
-  email: "junyoung8753@gmail.com"
+  email: # "junyoung8753@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -104,7 +104,7 @@ author:
       icon: #"fab fa-fw fa-facebook-square"
       url: #"https://facebook.com/"
     - label: "GitHub"
-      icon: "fab fa-fw fa-link "
+      icon: "fab fa-fw fa-link"
       url: "https://github.com/junyoung8753/"
     - label: "portfolio"
       icon: "fas fa-fw fa-link"
@@ -251,7 +251,7 @@ defaults:
   # _posts
   - scope:
       path: ""
-      type: posts
+      type: pages
     values:
       layout: single
       author_profile: true
@@ -259,6 +259,7 @@ defaults:
       comments: true
       share: true
       related: true
+      toc: true
 
   # _pages
   - scope:
@@ -267,6 +268,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      toc: true
 
   # _docs
   - scope:
@@ -275,33 +277,41 @@ defaults:
     values:
       sidebar:
         nav: "docs"
+
   #------------------------------------
+
   # js_pages
   - scope:
-      path: "js_pages"
+      path: "posting/js_pages/"
       type: pages
     values:
       layout: category
       author_profile: false
+      show_date: true
       sidebar:
         nav: "js-docs"
+      toc: true
 
   # vue_pages
   - scope:
-      path: "vue_pages"
+      path: "posting/vue_pages/"
       type: pages
     values:
       layout: category
       author_profile: false
+      show_date: true
+      toc: true
       sidebar:
         nav: "vue-docs"
 
   # more_pages
   - scope:
-      path: "more_pages"
+      path: "posting/more_pages/"
       type: pages
     values:
       layout: category
       author_profile: false
+      show_date: true
       sidebar:
         nav: "more-docs"
+      toc: true

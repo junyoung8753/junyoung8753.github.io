@@ -20,6 +20,11 @@ vue-docs:
     children:
       - title: "Vue.js란?"
         url: /vue/
+      - title: "인스턴스"
+        url: /vue/instance/
+      - title: "configuration"
+        url: /vue/configuration/
+
 
 more-docs:
   - title: Notes Storage
