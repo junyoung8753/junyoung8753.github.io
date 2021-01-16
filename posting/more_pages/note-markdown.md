@@ -3,7 +3,16 @@ title: "Markdown 사용법"
 toc_label: "Markdown 사용법"
 permalink: /more/markdown/
 author_profile: true
+layout: category
+show_date: true
+toc: true
 toc_sticky: true
+sidebar:
+  nav: "moreside"
+---
+
+---
+
 ---
 
 ## 헤더

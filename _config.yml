@@ -290,7 +290,7 @@ defaults:
       toc: true
       toc_sticky: true
       sidebar:
-        nav: "js-docs"
+        nav: "jsside"
 
   # vue_pages
   - scope:
@@ -303,7 +303,7 @@ defaults:
       toc: true
       toc_sticky: true
       sidebar:
-        nav: "vue-docs"
+        nav: "vueside"
 
   # more_pages
   - scope:
@@ -316,4 +316,4 @@ defaults:
       toc: true
       toc_sticky: true
       sidebar:
-        nav: "more-docs"
+        nav: "moreside"

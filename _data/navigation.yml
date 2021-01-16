@@ -7,7 +7,7 @@ main:
   - title: "More"
     url: /more/
 
-js-docs:
+jsside:
   - title: JS Fundamentals
     children:
       - title: "Variable"
@@ -15,13 +15,13 @@ js-docs:
       - title: "String"
         url: /js/string/
 
-vue-docs:
+vueside:
   - title: Vue Framework
     children:
       - title: "Vue.js 시작하기"
         url: /vue/
 
-more-docs:
+moreside:
   - title: Notes Storage
     children:
       - title: "More Main"
