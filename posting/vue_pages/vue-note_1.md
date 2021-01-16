@@ -1,12 +1,12 @@
 ---
 title: "Vue.js 시작하기"
-toc_label: "Vue.js 시작하기"
 permalink: /vue/
-author_profile: true
 layout: category
-show_date: true
 toc: true
+toc_label: "Vue.js 시작하기"
 toc_sticky: true
+author_profile: true
+show_date: true
 sidebar:
   nav: "vueside"
 ---

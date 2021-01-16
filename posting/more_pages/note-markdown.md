@@ -1,12 +1,12 @@
 ---
 title: "Markdown 사용법"
-toc_label: "Markdown 사용법"
 permalink: /more/markdown/
-author_profile: true
 layout: category
-show_date: true
 toc: true
+toc_label: "Markdown 사용법"
 toc_sticky: true
+author_profile: true
+show_date: true
 sidebar:
   nav: "moreside"
 ---
