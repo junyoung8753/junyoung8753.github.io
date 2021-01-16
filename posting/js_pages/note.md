@@ -1,11 +1,11 @@
 ---
 title: "JavaScript Note"
-toc_label: "JavaScript Note"
 permalink: /js/
 author_profile: true
 layout: category
 show_date: true
 toc: true
+toc_label: "JavaScript Note"
 toc_sticky: true
 sidebar:
   nav: "jsside"
