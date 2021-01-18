@@ -2,10 +2,12 @@
 title: "Vue.js 시작하기"
 permalink: /vue/
 type: pages
-toc_label: "Vue.js 시작하기"
 sidebar:
   nav: "vueside"
+toc: true
+toc_label: "Vue.js 시작하기"
 ---
+
 <!-- ---
 title: "Vue.js 시작하기"
 permalink: /vue/
@@ -19,8 +21,6 @@ show_date: true
 sidebar:
   nav: "vueside"
 --- -->
-
-
 
 <br>
 
