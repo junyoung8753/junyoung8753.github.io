@@ -2,6 +2,14 @@
 title: "Vue.js 시작하기"
 permalink: /vue/
 type: pages
+toc_label: "Vue.js 시작하기"
+sidebar:
+  nav: "vueside"
+---
+<!-- ---
+title: "Vue.js 시작하기"
+permalink: /vue/
+type: pages
 layout: category
 toc: true
 toc_label: "Vue.js 시작하기"
@@ -10,9 +18,7 @@ author_profile: true
 show_date: true
 sidebar:
   nav: "vueside"
----
-
-
+--- -->
 
 
 

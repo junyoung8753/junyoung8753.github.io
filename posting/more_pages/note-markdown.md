@@ -1,13 +1,8 @@
 ---
 title: "Markdown 사용법"
 permalink: /more/markdown/
-layout: category
 type: pages
-toc: true
 toc_label: "Markdown 사용법"
-toc_sticky: true
-author_profile: true
-show_date: true
 sidebar:
   nav: "moreside"
 ---
