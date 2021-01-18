@@ -256,16 +256,12 @@ defaults:
       layout: single
       toc: true
       author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
     # _pages
   - scope:
       path: ""
       type: pages
     values:
-      layout: category
+      layout: single
       toc: true
       toc_sticky: true
       author_profile: true
@@ -274,7 +270,7 @@ defaults:
       path: ""
       type: docs
     values:
-      layout: category
+      layout: single
       toc: true
       toc_sticky: true
       sidebar:
