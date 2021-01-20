@@ -8,20 +8,6 @@ toc: true
 toc_label: "Vue.js 시작하기"
 ---
 
-<!-- ---
-title: "Vue.js 시작하기"
-permalink: /vue/
-type: pages
-layout: category
-toc: true
-toc_label: "Vue.js 시작하기"
-toc_sticky: true
-author_profile: true
-show_date: true
-sidebar:
-  nav: "vueside"
---- -->
-
 <br>
 
 # 섹션 1. Vue.js 소개
@@ -33,8 +19,6 @@ sidebar:
 ## 1. MVVM 모델에서의 Vue
 
 <br/>
-
-<!-- vue1.png -->
 
 ![이미지](/posting/vue_pages/notes_img/vue1.png)
 
@@ -104,12 +88,12 @@ Object.defineProperty()
 <br>
 
 ```js
-Object.defineProperty(viewModel, "str", {
+Object.defineProperty(viewModel, 'str', {
   get: function () {
-    console.log("접근");
+    console.log('접근');
   },
   set: function (newValue) {
-    console.log("할당", newValue);
+    console.log('할당', newValue);
     div.innerHTML = newValue;
   },
 });
@@ -140,12 +124,12 @@ div.innerHTML에 newValue 가 출력된다.
 ```js
 (function () {
   function init() {
-    Object.defineProperty(viewModel, "str", {
+    Object.defineProperty(viewModel, 'str', {
       get: function () {
-        console.log("접근");
+        console.log('접근');
       },
       set: function (newValue) {
-        console.log("할당", newValue);
+        console.log('할당', newValue);
         render(newValue);
       },
     });
@@ -231,8 +215,9 @@ Vue 스크립트 소스
 
 <br/>
 
-인스턴스는 뷰로 개발할 때 필수로 생성해야 하는 코드
+* 인스턴스는 뷰로 개발할 때 필수로 생성해야 하는 코드
 
+* 모든 Vue 앱은 Vue 함수로 새 Vue 인스턴스를 만드는 것부터 시작한다.
 <br>
 
 _인스턴스 생성 방법_
@@ -247,9 +232,9 @@ _인스턴스 생성 방법_
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     var vm = new Vue({
-      el: "#app",
+      el: '#app',
       data: {
-        message: "hi",
+        message: 'hi',
       },
     });
   </script>
@@ -336,6 +321,161 @@ created : _뷰의 라이프 사이클과 관련된 속성_
 
 watch : _data에서 정의한 속성이 변화했을 때 추가 동작을 수행할 수 있게 정의하는 속성_
 
+<br>
+
+---
+
+---
+
 <br/>
 
-**Note:**
+# 섹션 3. 컴포넌트
+
+---
+
+## 1. 컴포넌트 소개
+
+<br/>
+
+`컴포넌트`는 화면의 영역을 구분하여 개발할 수 있는 뷰의 기능이다.
+
+컴포넌트 기반으로 화면을 개발하게 되면 코드의 __재사용성__ 이 올라가고 빠르게 화면을 제작할 수 있다.
+
+![component](/posting/vue_pages/notes_img/component-1.png)
+
+<br/>
+
+---
+
+<br/>
+
+## 2. 컴포넌트 등록 및 실습
+
+<br/>
+
+```html
+  <body>
+    <div id="app">
+      <app-header></app-header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+  // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+      Vue.component('app-header', {
+        template: '<h1>Header</h1>',
+      });
+// Vue 생성, ele 선택
+      new Vue({
+        el: '#app',
+      });
+    </script>
+  </body>
+```
+
+1. new Vue를 만들어 el: '#app'을 잡는다.
+2. Vue.component라는 메소드로 'app-header'란 이름을 준다
+3. 컴포넌트 내용에 template속성을 이용해 \<h1>Header\</h1>를 넣었다.
+__정리__: Vue 로 el #app을 선택후 컴포넌트로 이름과 속성을 주고 선택한 #app태그 안쪽에 이름'app-header'를 넣으면 속성이 실행된다.
+
+<br/>
+
+---
+
+<br/>
+
+## 3. 전역 컴포넌트 등록
+
+<br/>
+
+```html
+  <body>
+    <div id="app">
+      <app-header></app-header>
+      <app-content></app-content>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+  // (Vue.componet = 전역컴포넌트)
+      Vue.component('app-header', {
+        template: '<h1>Header</h1>',
+      });
+
+      Vue.component('app-content', {
+        template: '<h2>content</h2>',
+      });
+
+      new Vue({
+        el: '#app',
+      });
+    </script>
+  </body>
+```
+
+<br/>
+
+---
+
+<br/>
+
+  ## 3. 지역컴포넌트
+
+
+```html
+  <body>
+    <div id="app">
+      <app-header></app-header>
+      <app-content></app-content>
+      <app-footer></app-footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+      // (Vue.componet = 전역컴포넌트)
+      Vue.component('app-header', {
+        template: '<h1>Header</h1>',
+      });
+      Vue.component('app-content', {
+        template: '<h2>content</h2>',
+      });
+
+      new Vue({
+        el: '#app',
+        //지역 컴포넌트 등록방식
+        components: {
+          // '컴포넌트 이름(key)': {컴포넌트 내용(value)}
+          'app-footer': {
+            template: '<footer>footer</footer>',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+```
+
+---
+
+<br/>
+
+## 4. 전역 컴포넌트와 지역 컴포넌트의 차이점
+
+* 지역 컴포넌츠는 복수이기때문에 s가 붙어서 components라고 한다.  
+
+* 일반적으로 지역 컴포넌츠로 등록해나가면서 사용을 하며 전역컴포넌트는 라이브러리나 전역으로 세팅할때 사용한다.
+
+---
+
+<br/>
+
+## 5. 컴포넌트와 인스턴스와의 관계
+
+<br>
+
+지역컴포넌트를 등록안한 지역에 사용하면 작동하지 않으며 일반적으로 실무에서는 전역컴포넌트보다는 지역컴포넌트를 사용한다.  
+즉, 인스턴스 하나를 붙이고 그안에 컴포넌트 붙여나가는 방식으로 진행한다.
+
+---
+
