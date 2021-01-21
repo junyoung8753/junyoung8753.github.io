@@ -1,11 +1,11 @@
 ---
-title: "Vue.js 시작하기"
+title: 'Vue.js 시작하기'
 permalink: /vue/
 type: pages
 sidebar:
-  nav: "vueside"
+  nav: 'vueside'
 toc: true
-toc_label: "Vue.js 시작하기"
+toc_label: 'Vue.js 시작하기'
 ---
 
 <br>
@@ -20,7 +20,7 @@ toc_label: "Vue.js 시작하기"
 
 <br/>
 
-![이미지](/posting/vue_pages/notes_img/vue1.png)
+![vue_1-1](/posting/vue_pages/notes_img/vue_1-1.png)
 
 <br/>
 
@@ -341,7 +341,7 @@ watch : _data에서 정의한 속성이 변화했을 때 추가 동작을 수행
 
 컴포넌트 기반으로 화면을 개발하게 되면 코드의 __재사용성__ 이 올라가고 빠르게 화면을 제작할 수 있다.
 
-![component](/posting/vue_pages/notes_img/component-1.png)
+![vue_3-1](/posting/vue_pages/notes_img/vue_3-1.png)
 
 <br/>
 
@@ -479,3 +479,287 @@ __정리__: Vue 로 el #app을 선택후 컴포넌트로 이름과 속성을 주
 
 ---
 
+---
+
+<br/>
+
+# 섹션 4. 컴포넌트 통신 방법 - 기본
+
+---
+
+## 1. 컴포넌트 통신
+
+<br/>
+
+
+![vue_4-1](/posting/vue_pages/notes_img/vue_4-1.png)
+
+---
+
+<br>
+
+## 2. 컴포넌트 통신 규칙이 필요한 이유
+
+<br>
+
+데이터의 흐름을 추적하기 어려운 문제점을 해결하기 위하여 event 를 올려보내고 props를 내려보내는 방식의 규칙으로 사용한다.
+
+![vue_4-2](/posting/vue_pages/notes_img/vue_4-2.png)
+
+---
+
+<br>
+
+## 3. props 속성
+
+- __props__: property의 약자로 부모에게 받아온 데이터.
+
+<br>
+
+```html
+<app-header v-bind:프롭스 속성이름="상위 컴포넌트 데이터 이름"></app-header>
+```
+
+의 문법을 사용하여 components안에 가져오고싶은 data를 가져올수있다.
+
+---
+
+<br>
+
+## 4. props 속성의 특징
+
+정리:
+1. Vue를 생성후 el: '#app' 지역에 사용하겟다고 말한다
+2. components: 와 data: 를 만든다.
+   * components의 이름을 app-header라짓고 안에 template과 props의 속성을 줫다.
+   * data에는 message에 속성을 줫다.
+3. 그후 app-header(컴포넌트)에 만들어놓은 data를 가져다 썻다. 
+```html
+    <app-header v-bind:propsdata="message"></app-header> 
+```
+
+```html
+  <body>
+    <div id="app">
+      <!-- <app-header v-bind:프롭스 속성이름="상위 컴포넌트 데이터 이름"></app-header> -->
+      <app-header v-bind:propsdata="message"></app-header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var appHeader = {
+        template: '<h1>header<h1>',
+        props: ['propsdata'],
+      };
+
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+
+        },
+        data: {
+          message: 'hi',
+        },
+      });
+    </script>
+  </body>
+```
+
+---
+
+<br>
+
+## 5. props 속성 실습
+
+```html
+  <body>
+    <div id="app">
+      <app-header v-bind:propsdata1="message"></app-header>
+      <app-content v-bind:propsdata2="num"></app-content>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+      var appHeader = {
+        template: '<h1>{{ propsdata1 }}</h1>',
+        props: ['propsdata1'],
+      };
+
+      var appContent = {
+        template: '<div>{{propsdata2}}</div>',
+        props: ['propsdata2']
+      };
+
+      new Vue({
+        el: '#app',
+
+        components: {
+          'app-header': appHeader,
+          'app-content': appContent,
+        },
+        
+        data: {
+          message: 'hi',
+          num: 10,
+        },
+      });
+
+    </script>
+  </body>
+```
+
+크롬 Vue창과 화면창에  
+propsdata1: hi  
+propsdata2: 10  
+이 나온다.
+
+---
+
+<br>
+
+## 6. event emit
+
+<br>
+
+* event 올라가는 구조: ([컴포넌트 통신 방식](#2.-컴포넌트-통신-규칙이-필요한-이유) 참조)
+
+<br>
+
+```html
+  <body>
+    <div id="app">
+      <app-header> </app-header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      var appHeader = {
+        template: '<button v-on:click="passEvent">click me</button>',
+        methods: {
+          passEvent: function () {
+            this.$emit('pass');
+          },
+        },
+      };
+
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+        },
+      });
+    </script>
+  </body>
+```
+
+1. methods에 passEvent를 정의했다.
+2. template에 버튼을 만들고 v-on:click="____"을 준다음 passEvent 함수를 넣어줫다.
+3. this.$emit() 라는 Vue.js에서 제공하는 api(기능)을 이용하여 'pass'라는 값을 넣어줫다.
+
+---
+
+<br>
+
+## 7. event emit으로 콘솔 출력하기
+
+<br>
+
+![vue_4-7](/posting/vue_pages/notes_img/vue_4-7.png)
+
+* 상위에서 하위로는 데이터를 내려줌, 프롭스 속성
+* 하위에서 상위로는 이벤트를 올려줌, 이벤트 발생
+
+---
+
+<br>
+
+## 8. event emit 실습
+
+<br>
+
+```html
+ <body>
+    <div id="app">
+      <p>{{num}}</p>
+      <app-header v-on:decrease="decreaseNumber"> </app-header>
+      <app-content v-on:increase="increaseNumber"> </app-content>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    //하위컴포넌트(appHeader)
+      var appHeader = {
+        template: '<button v-on:click="deleteNumber">minus</button>',
+        methods: {
+          deleteNumber: function () {
+            this.$emit('decrease');
+          },
+        },
+      };
+    // 하위컴포넌트(appContent)
+      var appContent = {
+        template: '<button v-on:click="addNumber">plus</button>',
+        methods: {
+          addNumber: function () {
+            this.$emit('increase');
+          },
+        },
+      };
+    //상위 컴포넌트(root)
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+          'app-content': appContent,
+        },
+        methods: {
+          decreaseNumber: function () {
+            this.num = this.num - 1;
+          },
+          increaseNumber: function () {
+            this.num = this.num + 1;
+          },
+        },
+        data: {
+          num: 10,
+        },
+      });
+    </script>
+  </body>
+  ```
+
+  ---
+
+## 9. 인스턴스에스의 this
+
+<br>
+
+this 는 해당 object를 가리키며 
+this의 속성이름을 사용해서 해당위치나 값을 구한다.  
+
+```js
+var vm = new Vue({
+  el: '#app',
+  components: {
+    'app-header': appHeader,
+    'app-content': appContent,
+  },
+  methods: {
+    decreaseNumber: function () {
+      this.num = this.num - 1;
+    },
+    increaseNumber: function () {
+      this.num = this.num + 1;
+    },
+  },
+  data: {
+    num: 10,
+  },
+});
+```
+__ex)__
+
+* this는 vm을 가리킨다.  
+* this.num = 10 이다
