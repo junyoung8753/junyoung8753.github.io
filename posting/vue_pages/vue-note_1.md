@@ -20,6 +20,8 @@ toc_label: 'Vue.js 시작하기'
 
 <br/>
 
+<!-- vue1.png -->
+
 ![vue_1-1](/posting/vue_pages/notes_img/vue_1-1.png)
 
 <br/>
@@ -763,3 +765,81 @@ __ex)__
 
 * this는 vm을 가리킨다.  
 * this.num = 10 이다
+
+---
+
+---
+
+<br/>
+
+# 섹션 5. 컴포넌트 통신 방법 - 응용
+
+---
+
+## 1. 같은 컴포넌트 레벨 간의 통신 방법
+
+<br/>
+
+```html  <body>
+    <div id="app">
+      <app-header v-bind:propsdata="num"></app-header>
+      <app-content v-on:pass="deliverNum"></app-content>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const appHeader = {
+        template: '<div>header</div>',
+        props: ['propsdata'],
+      };
+      const appContent = {
+        template:
+          '<div>content<button v-on:click="passNum">pass</button></div>',
+        methods: {
+          passNum: function () {
+            this.$emit('pass', 10);
+          },
+        },
+      };
+
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+          'app-content': appContent,
+        },
+        data: {
+          num: 0,
+        },
+        methods: {
+          deliverNum: function (value) {
+            this.num = value;
+          },
+        },
+      });
+    </script>
+  </body>
+  ```
+
+\- __event를 root컴포넌트에 올리기__ -
+
+1. appContent에서 버튼을 만들고 v-on으로 클릭하면 passNum이 실행되게 만든다.  
+
+2. passNum이 되면this.$emit('pass',10)을 한다.  
+
+3. app-content에서 10을 pass로 받고 root의 method에 있는 deliverNum에 넘겨준다.  
+
+4. root에 기본 data값을 num:0으로 주고 deliverNum에서 값을 받으면 그 값이 num이 되도록 this.num = value 를 준다.  
+
+
+\- __root컴포넌트의 num값을 props로 내리기__ -
+
+1. appHeader를 만든후 props를 만든다.  
+
+2. app-header에서 v-bind:propsdata="num"이라 정의한다. 즉, 상위 root에 있는 num의 값을 하위 컴포넌트인 appHeader의 propsdata로 가져온다.  
+
+** `더 쉽게 요약` **
+1. 하위 appContent에서 method-passNum-this.$emit으로 10을 상위로 root-method를 통해 data에 전달했다  
+
+2. 상위 root의 num 값을 하위 appHeader의 propsdata로 app-header를 통해 전달했다.
+
