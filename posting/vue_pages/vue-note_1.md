@@ -20,8 +20,6 @@ toc_label: 'Vue.js 시작하기'
 
 <br/>
 
-<!-- vue1.png -->
-
 ![vue_1-1](/posting/vue_pages/notes_img/vue_1-1.png)
 
 <br/>
@@ -308,6 +306,12 @@ new Vue({
   methods: ,
   created: ,
   watch: ,
+  router: ,
+  components:{
+    template
+    props
+    method
+  },
 });
 ```
 
@@ -493,7 +497,6 @@ __정리__: Vue 로 el #app을 선택후 컴포넌트로 이름과 속성을 주
 
 <br/>
 
-
 ![vue_4-1](/posting/vue_pages/notes_img/vue_4-1.png)
 
 ---
@@ -531,11 +534,14 @@ __정리__: Vue 로 el #app을 선택후 컴포넌트로 이름과 속성을 주
 ## 4. props 속성의 특징
 
 정리:
-1. Vue를 생성후 el: '#app' 지역에 사용하겟다고 말한다
+1. Vue를 생성후 el: '#app' 지역에 사용하겟다고 말한다  
+
 2. components: 와 data: 를 만든다.
    * components의 이름을 app-header라짓고 안에 template과 props의 속성을 줫다.
-   * data에는 message에 속성을 줫다.
+   * data에는 message에 속성을 줫다.  
+
 3. 그후 app-header(컴포넌트)에 만들어놓은 data를 가져다 썻다. 
+
 ```html
     <app-header v-bind:propsdata="message"></app-header> 
 ```
@@ -730,7 +736,7 @@ propsdata2: 10
       });
     </script>
   </body>
-  ```
+```
 
   ---
 
@@ -761,6 +767,7 @@ var vm = new Vue({
   },
 });
 ```
+
 __ex)__
 
 * this는 vm을 가리킨다.  
@@ -780,7 +787,8 @@ __ex)__
 
 <br/>
 
-```html  <body>
+```html
+  <body>
     <div id="app">
       <app-header v-bind:propsdata="num"></app-header>
       <app-content v-on:pass="deliverNum"></app-content>
@@ -819,7 +827,7 @@ __ex)__
       });
     </script>
   </body>
-  ```
+```
 
 \- __event를 root컴포넌트에 올리기__ -
 
@@ -838,8 +846,147 @@ __ex)__
 
 2. app-header에서 v-bind:propsdata="num"이라 정의한다. 즉, 상위 root에 있는 num의 값을 하위 컴포넌트인 appHeader의 propsdata로 가져온다.  
 
-** `더 쉽게 요약` **
+__** `요약` **__
+
 1. 하위 appContent에서 method-passNum-this.$emit으로 10을 상위로 root-method를 통해 data에 전달했다  
 
 2. 상위 root의 num 값을 하위 appHeader의 propsdata로 app-header를 통해 전달했다.
 
+---
+
+---
+
+<br/>
+
+# 섹션 6. 라우터
+
+---
+
+## 1. 뷰 라우터 소개와 설치
+
+<br>
+
+설치법
+
+1. https://router.vuejs.org/installation.html#direct-download-cdn 를 접속.
+
+2. CDN 복사 
+   https://unpkg.com/vue-router/dist/vue-router.js
+
+3. script scr에 붙여넣기.
+
+---
+
+## 2.뷰 라우터 인스턴스 연결 및 초기 상태 안내
+
+<br>
+
+(참고1)
+
+```html
+ <body>
+    <div id="app">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+      const router = new VueRouter({
+
+      });
+
+      new Vue({
+        el: '#app',
+        router: router,
+      });
+    </script>
+  </body>
+  ```
+
+(참고2)
+
+```html
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+      const LoginComponent = {
+        template: '<div>login</div>',
+      };
+
+      const MainComponent = {
+        template: '<div>main</div>',
+      };
+
+      const router = new VueRouter({
+        //페이지의 라우팅 정보
+        routes: [
+          {
+            // 페이지의 url
+            path: '/login',
+            // 해당 url에서 표시될 컴포넌트
+            componenet: LoginComponent,
+          },
+          {
+            path: '/main',
+            component: MainComponent,
+          },
+        ],
+      });
+
+      new Vue({
+        el: '#app',
+        router: router,
+      });
+    </script>
+  </body>
+</html>
+```
+
+위와 같이 라우터를 등록하고 나면 그 다음에 할 일은 라우터에 옵션을 정의하는 일이다. 대부분의 SPA 앱에서는 아래와 같이 2개 옵션을 필수로 지정한다.
+
+routes : 라우팅 할 URL과 컴포넌트 값 지정  
+mode : URL의 해쉬 값 제거 속성(hitstory를 쓰면 url에 #이  안붙는다.)  
+
+
+```js
+new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '/login', component: LoginComponent },
+    { path: '/home', component: HomeComponent }
+  ]
+})
+```
+
+---
+
+## 3.라우터가 표시되는 영역 및 router-view 태그 설명
+
+<br>
+
+```html
+<div id="app">
+  <router-view></router-view>
+</div>
+```
+
+router-view 태그를 사용하면 라우터의 routes -> path의 url로 이동했을때 해당되는 component가 실행된다. 
+
+---
+
+## 4. 링크를 이용한 페이지 이동 및 router-link 태그 설명
+
+<br>
+
+```html
+<body>
+    <div id="app">
+      <div>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/main">Main</router-link>
+      </div>
+```
+
+라우터링크는 말 그대로 링크를 제공해주는 역활을 한다. 
+라우터 루트로 경로를 연결하고 컴포넌트로 template를 꾸민후 router-view로 html에 표현하고 링크를 만든다.
